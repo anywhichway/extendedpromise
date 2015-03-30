@@ -15,3 +15,11 @@ Currently planned sprints are:
 [2015 April](https://github.com/anywhichway/extendedpromise/milestones/2015%20April%20Sprint)
 
 Feel free to fork and send us pull requests. We would like to make this better for everyone.
+
+# updates
+
+2015-30-30 Initial public commit v0.0.83
+
+# license
+
+This software is provided as-is under the [MIT license](http://opensource.org/licenses/MIT).

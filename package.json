@@ -1,0 +1,30 @@
+{
+  "name": "extendedpromise",
+  "version":"0.0.83",
+  "description": "Extends Javascript Promises to support timeouts with default resolutions, state checking and the ability to relieve Promises of the responsibility to complete",
+  "main": "extendedpromise.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anywhichway/extendedpromise.git"
+  },
+  "keywords": [
+    "defineProperty",
+    "getOwnPropertyDescriptor",
+    "reactive",
+    "security",
+    "validation",
+    "node"
+  ],
+  "author": "Simon Y. Blackwell <syblackwell@anywhichway.com> (http://www.github.com/anywhichway)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anywhichway/extendedpromise/issues"
+  },
+  "dependencies": {
+   
+  },
+  "homepage": "https://github.com/anywhichway/extendedpromise"
+}
