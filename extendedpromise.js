@@ -44,20 +44,27 @@
 		var innerpromises = [];
 		var winner;
 		promises.forEach(function(promise,i) {
-			innerpromises.push(promise.asPromise().then(function() { winner!=undefined || (winner = i); }));
+			promise instanceof Promise || (promise = promise.asPromise());
+			innerpromises.push(promise.then(function() { winner!=undefined || (winner = i); }));
 		});
 		var race = Promise.race(innerpromises);
 		race.then(function() {
 			Object.defineProperty(extendedrace,"winner",{enumerable:true,configurable:false,writable:false,value:winner}); 
 		});
-		return extendedrace = new ExtendedPromise(race);
+		var extendedrace = new ExtendedPromise(race);
+		if(!extendedrace.winner) {
+			Object.defineProperty(extendedrace,"winner",{enumerable:true,configurable:true,writable:false,value:undefined}); 
+		}
+		return extenedrace;
 	}
 	ExtendedPromise.prototype.then = function(onFullfilled,onRejected) {
-		this.promise = this.promise.then(onFullfilled,onRejected);
+		var me = this;
+		this.promise = this.promise.then(function(value) { me.rejected ||  me.relieved || onFullfilled(value) } ,function(value) { me.fulfilled ||  me.relieved || onRejected(value) });
 		return this;
 	}
 	ExtendedPromise.prototype.catch = function(onRejected) {
-		this.promise = this.promise.catch(onRejected);
+		var me = this;
+		this.promise = this.promise.catch(function(value) { me.fulfilled ||  me.relieved || onRejected(value) });
 		return this;
 	}
 	ExtendedPromise.prototype.relief = function(onRelief) {
