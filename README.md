@@ -1,6 +1,6 @@
 # extendedpromise
 
-Extended Promise extends Javascript Promises to support timeouts with default resolutions, state checking and the ability to relieve Promises of the responsibility to complete. This is accomplished by wrapping Promises with another class to avoid the risks associated with a shim on built-in Promises or Promise subclassing.
+Extended Promise extends JavaScript Promises to support timeouts with default resolutions, state checking and the ability to relieve Promises of the responsibility to complete, including when raced. This is accomplished by wrapping Promises with another class to avoid the risks associated with a shim on built-in Promises or Promise subclassing.
 
 For documentation see the Wiki: https://github.com/anywhichway/extendedpromise/wiki
 
