@@ -1,61 +1,61 @@
 <html>
 <head>
-<script src="../extendedpromise.js"></script>
+<script src="../extendedpromise.min.js"></script>
 </head>
 <body>
 <script>
-var promise0 = ExtendedPromise.resolve(1).then(document.write("<br>"+"Resolved promise generated"));
+var promise0 = ExtendedPromise.resolve(1).then(document.body.innerHTML += "<br>"+"Resolved promise generated");
 var promise1 = new ExtendedPromise(Promise.resolve("ok"));
 promise1.then(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise1));
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise1);
 });
 var promise2 = new ExtendedPromise(Promise.reject(new Error("error")));
 promise2.catch(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise2)); 
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise2); 
 });
 var promise3 = new ExtendedPromise(new Promise(function(resolve,reject) { resolve("ok"); }));
 promise3.then(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise3));
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise3);
 });
 var promise4 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve("ok"); },5000); }),2000);
 promise4.then(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise4)); 
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise4); 
 });
 promise4.catch(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise4)); 
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise4); 
 });
 var promise5 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve("ok"); },5000); }),10000);
 promise5.then(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise5)); 
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise5); 
 });
 var promise6 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve("should be relieved and not print"); },1000); }),2000);
 promise6.then(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise6)); 
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise6); 
 });
 promise6.relieve("no longer needed");
 var promise7 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve("should be relieved and not print"); },3000); }),6000);
 promise7.then(function(result) { 
-	document.write("<br>"+result);
-	document.write("<br>"+JSON.stringify(promise7));
+	document.body.innerHTML += "<br>"+result;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise7);
 });
 promise7.relief(function(reason) {
-	document.write("<br>"+"Thanks for the relief because " + reason);
-	document.write("<br>"+JSON.stringify(promise7));
+	document.body.innerHTML += "<br>"+"Thanks for the relief because " + reason;
+	document.body.innerHTML += "<br>"+JSON.stringify(promise7);
 });
 setTimeout(function() { promise7.relieve("no longer needed"); },1000);
-var promise8 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve(); },10000); })).then(function() { document.write("<br>"+"should be beaten and not print") });
-var promise9 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve(); },5000); })).then(function() { document.write("<br>"+"should win and print") });;
-var promise10 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve(); },6000); })).then(function() { document.write("<br>"+"should be beaten and not print") });
-var promise11 = ExtendedPromise.race([promise8,promise9,promise10],true).then(function() { document.write("<br>"+"The winner is " + promise11.winner + "!"); document.write("<br>"+JSON.stringify(promise11)); });
-promise5.then(function() { document.write("<br>"+"delayed addition of then to promise 5 ... ok"); });
-promise6.then(function() { document.write("<br>"+"delayed addition of then to promise 6 ...  relieved and should not print"); });
+var promise8 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve(); },10000); })).then(function() { document.body.innerHTML += "<br>"+"should be beaten and not print" });
+var promise9 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve(); },5000); })).then(function() { document.body.innerHTML += "<br>"+"should win and print" });;
+var promise10 = new ExtendedPromise(new Promise(function(resolve,reject) { setTimeout(function() { resolve(); },6000); })).then(function() { document.body.innerHTML += "<br>"+"should be beaten and not print" });
+var promise11 = ExtendedPromise.race([promise8,promise9,promise10],true).then(function() { document.body.innerHTML += "<br>"+"The winner is " + promise11.winner + "!"; document.body.innerHTML += "<br>"+JSON.stringify(promise11); });
+promise5.then(function() { document.body.innerHTML += "<br>"+"delayed addition of then to promise 5 ... ok"; });
+promise6.then(function() { document.body.innerHTML += "<br>"+"delayed addition of then to promise 6 ...  relieved and should not print"; });
 </script>
 </body>
 </html>

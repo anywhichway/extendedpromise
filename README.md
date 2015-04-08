@@ -18,7 +18,9 @@ Feel free to fork and send us pull requests. We would like to make this better f
 
 # updates
 
-2015-30-30 Initial public commit v0.0.83
+2015-03-30 Initial public commit v0.0.83
+
+2015-04-07 Updated tests, version not incremented
 
 # license
 
